@@ -5,9 +5,9 @@ spring:
   #数据库配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://39.105.64.96:3306/blog?useSSL=false&useUnicode=true&characterEncoding=utf-8
-    password: 123456
-    username: root
+    url: ?useSSL=false&useUnicode=true&characterEncoding=utf-8
+    password:
+    username:
 
 #mybatis配置
 mybatis-plus:
