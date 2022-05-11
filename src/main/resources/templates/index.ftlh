@@ -8,6 +8,20 @@
     <div class="layui-row layui-col-space15">
 <#--        <#include "/inc/common/left.ftlh"/>-->
         <div class="layui-col-md8">
+            <div class="fly-panel">
+                <div class="fly-panel-title fly-filter">
+                    <a>置顶</a>
+                    <a href="#signin" class="layui-hide-sm layui-show-xs-block fly-right" id="LAY_goSignin" style="color: #FF5722;">去签到</a>
+                </div>
+                <ul class="fly-list">
+                    <@posts size=3 level=1>
+                        <#list results.records as post>
+                            <@plisting post></@plisting>
+                        </#list>
+                    </@posts>
+
+                </ul>
+            </div>
 
             <div class="fly-panel" style="margin-bottom: 0;">
 
@@ -29,29 +43,12 @@
                 <ul class="fly-list">
 
                     <#list pageDetail.records as post>
-                        <li>
-                            <a href="/user/${post.authorId}" class="fly-avatar">
-                                <img src="${post.authorAvatar}" alt="${post.authorName}"/>
-                            </a>
-                            <h2>
-                                <a class="layui-badge">${post.categoryName}</a>
-                                <a href="jie/detail.html">${post.title}</a>
-                            </h2>
-                            <div class="fly-list-info">
-                                <a href="user/${post.authorId}" link>
-                                    <cite>${post.authorName}</cite>
-                                </a>
-<#--                                <span>${post.created?string("yyyy-MM-dd")}</span>-->
-                                <span>${timeAgo(post.created)}</span>
-                                <span class="fly-list-nums"></span>
-                                    <i class="iconfont icon-pinglun1" title="回答"></i>${post.commentCount}
-                                </span>
-                            </div>
-                        </li>
+                        <@plisting post></@plisting>
                     </#list>
                 </ul>
 
-                <@paging pageDetail></@paging>
+                <@paging pageDetail>
+                </@paging>
 
             </div>
         </div>
