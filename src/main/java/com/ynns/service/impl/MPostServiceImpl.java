@@ -30,13 +30,18 @@ public class MPostServiceImpl extends ServiceImpl<MPostMapper, MPost> implements
         if (level == null) level = -1;
 
         QueryWrapper wrapper = new QueryWrapper<MPost>()
-                .eq(categoryId != null, "category_id", categoryId)
-                .eq(userId != null, "user_id", userId)
-                .eq(level == 0, "level", 0)
-                .gt(level >0, "level", 0)
+                .eq(categoryId != null, "p.category_id", categoryId)
+                .eq(userId != null, "p.user_id", userId)
+                .eq(level == 0, "p.level", 0)
+                .gt(level >0, "p.level", 0)
                 .orderByDesc(order != null, order);
 
         return postMapper.selectPosts(page,wrapper);
 
+    }
+
+    @Override
+    public MPost selectOnePost(QueryWrapper<MPost> wrapper) {
+        return postMapper.selectOnePost(wrapper);
     }
 }

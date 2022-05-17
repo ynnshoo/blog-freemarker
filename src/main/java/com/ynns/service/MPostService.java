@@ -1,5 +1,6 @@
 package com.ynns.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ynns.entity.MPost;
@@ -26,4 +27,6 @@ public interface MPostService extends IService<MPost> {
      * @return
      */
     IPage<PostVO> paging(Page page, Long categoryId, Long userId, Integer level, Boolean recommend, String order);
+
+    MPost selectOnePost(QueryWrapper<MPost> wrapper);
 }

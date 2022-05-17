@@ -14,7 +14,7 @@
                     <a href="#signin" class="layui-hide-sm layui-show-xs-block fly-right" id="LAY_goSignin" style="color: #FF5722;">去签到</a>
                 </div>
                 <ul class="fly-list">
-                    <@posts size=3 level=1>
+                    <@posts size=2 level=1>
                         <#list results.records as post>
                             <@plisting post></@plisting>
                         </#list>
@@ -34,10 +34,10 @@
                     <span class="fly-mid"></span>
                     <a href="">精华</a>
                     <span class="fly-filter-right layui-hide-xs">
-            <a href="" class="layui-this">按最新</a>
-            <span class="fly-mid"></span>
-            <a href="">按热议</a>
-          </span>
+                        <a href="" class="layui-this">按最新</a>
+                        <span class="fly-mid"></span>
+                        <a href="">按热议</a>
+                     </span>
                 </div>
 
                 <ul class="fly-list">
@@ -47,6 +47,7 @@
                     </#list>
                 </ul>
 
+                <!--分页信息-->
                 <@paging pageDetail>
                 </@paging>
 

@@ -18,4 +18,21 @@
 
         ${ew.customSqlSegment}
     </select>
+
+    <select id="selectOnePost" resultType="com.ynns.entity.vo.PostVO">
+        select
+            p.*,
+
+            u.id as authorId,
+            u.username as authorName,
+            u.avatar as authorAvatar,
+
+            c.id as categoryId,
+            c.name as categoryName
+        from
+            m_post p left join m_user u on p.user_id = u.id
+                     left join m_category c on c.id = u.id
+
+        ${ew.customSqlSegment}
+    </select>
 </mapper>

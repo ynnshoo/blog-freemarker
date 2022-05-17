@@ -22,4 +22,6 @@ import org.springframework.stereotype.Repository;
 public interface MPostMapper extends BaseMapper<MPost> {
 
     IPage<PostVO> selectPosts(Page page, @Param(Constants.WRAPPER) QueryWrapper wrapper);
+
+    MPost selectOnePost(@Param(Constants.WRAPPER) QueryWrapper<MPost> wrapper);
 }
