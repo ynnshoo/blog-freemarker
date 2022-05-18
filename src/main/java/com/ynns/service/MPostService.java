@@ -29,4 +29,10 @@ public interface MPostService extends IService<MPost> {
     IPage<PostVO> paging(Page page, Long categoryId, Long userId, Integer level, Boolean recommend, String order);
 
     MPost selectOnePost(QueryWrapper<MPost> wrapper);
+
+    //缓存本周热议
+    void initWeekRank();
+
+    //更新本周热议
+    void incrCommentCountAndUnionForWeekRank(long postId, boolean isIncr);
 }

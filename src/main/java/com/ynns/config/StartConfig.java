@@ -3,6 +3,7 @@ package com.ynns.config;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ynns.entity.MCategory;
 import com.ynns.service.MCategoryService;
+import com.ynns.service.MPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -22,13 +23,20 @@ public class StartConfig implements ApplicationRunner, ServletContextAware {
     @Autowired
     ServletContext serveltContext;
 
+    @Autowired
+    MPostService postService;
+
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args){
         List<MCategory> categoryList = categoryService.list(new QueryWrapper<MCategory>()
                 .eq("status", 0) //eq 条件；state:0 上线
         );
 
+        //加载category列表
         serveltContext.setAttribute("categorys",categoryList);
+
+        //加载本周热议
+        postService.initWeekRank();
     }
 
     @Override
